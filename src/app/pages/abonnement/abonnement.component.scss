@@ -1,0 +1,17 @@
+.thetwo{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    column-gap: normal;
+    color: black !important;
+    margin: 20px;
+}
+.oneF{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    margin: 20px;
+
+}

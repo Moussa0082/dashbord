@@ -1,0 +1,62 @@
+<div class="main-content">
+    <div class="container">
+       
+  
+                
+                
+        <!-- tableau  -->
+  
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <h4 class="card-title">Liste des banques</h4>
+  
+                <div class="add" >
+                    <button style="color: white; border-radius:20px; background-color: blue; border: none; width: 120px;" (click)="openDialog()"> <i class=" fa fa-plus"></i> Ajouter </button>
+                 </div>
+                 
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th> ID</th>
+                          <th> Nom Banque</th>
+                          <th> Adresse </th>
+                          <!-- <th> Image </th> -->
+                          <th> Date D'inscription</th>
+                          <!-- <th> Administrateur</th> -->
+                          <th> Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let bank of banques">
+                          <td> {{bank.idBanque}} </td>
+                          <td> {{bank.nom}} </td>
+                          <td> {{bank.adresse}} </td>
+                          <!-- <td> <img [src]=" 'http://localhost'+ bank.image" width="40px" height="40px" alt=""> </td> -->
+                          <!-- <td> {{bank.image}} </td> -->
+                          <td> {{bank.dateCreated}} </td>
+                          <!-- <td> {{bank.admin?.prenom?.toUpperCase()}} {{bank.admin?.nom?.toUpperCase()}} </td> -->
+                          <!-- <td>{{bank.admin.prenom}} {{bank.admin.nom}}</td> -->
+                          <td>
+                            <i class="fas fa-edit" style="color: green;" (click)="openModifierDialog(bank)" ></i>
+                            <i class="fas fa-trash" style="color: red;" (click)="onDelete(bank.idBanque)" ></i>
+                           </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- fin  -->
+          
+  
+  
+  
+    </div>
+  </div>
+  

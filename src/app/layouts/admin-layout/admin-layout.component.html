@@ -1,0 +1,32 @@
+<!-- <div class="wrapper">
+    <div *ngIf=" admConnect != null  " class="sidebar" data-color="purple" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+        <app-sidebar ></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/img/sidebarimg.png)"></div>
+    </div>
+
+    <div class="main-panel">
+        <app-navbar *ngIf="admConnect != null " ></app-navbar>
+        <router-outlet></router-outlet>
+        <div *ngIf="isMaps('maps')">
+            <app-footer *ngIf="admConnect != null " ></app-footer>
+        </div>
+    </div>
+</div> -->
+
+<div class="wrapper" >
+    <div  class="sidebar"  *ngIf="!isLoginPage " data-color="purple" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+    <!-- <div *ngIf=" admConnect != null  " class="sidebar" data-color="purple" data-background-color="white" data-image="./assets/img/sidebar-1.jpg"> -->
+        <app-sidebar ></app-sidebar>
+        <!-- <div class="sidebar-background" style="background-image: url(./assets/img/sidebarimg.png)"></div> -->
+    </div>
+
+    <div class="main-panel">
+        <app-navbar  ></app-navbar>
+        <!-- <app-navbar *ngIf="admConnect != null " ></app-navbar> -->
+        <router-outlet></router-outlet>
+        <div *ngIf="isMaps('maps')">
+            <app-footer ></app-footer>
+            <!-- <app-footer *ngIf="admConnect != null " ></app-footer> -->
+        </div>
+    </div>
+</div>

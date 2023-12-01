@@ -1,0 +1,42 @@
+<!-- <div  class="logo">
+    <div class="customlogo">
+        <img src="/assets/img/logoone.png"   width="60%" style="margin-left: 40px;"/>
+    </div>
+    </div>
+<div  class="sidebar-wrapper">
+    <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="fas {{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+            
+        </li>
+        
+    </ul>
+    
+            
+    <button style="margin-left: 30px;" class="btn btn-round" (click)="deConnecter()" > <i class="fas fa-right-from-bracket"></i> Deconnexion</button>
+    
+</div> -->
+
+
+
+ 
+
+<div  class="logo" *ngIf="!isLoginPage" >
+    <div class="customlogo">
+        <img src="/assets/img/logo.png"   style="width: 150px; height: 40px;"/>
+    </div>
+    </div>
+<div  class="sidebar-wrapper" *ngIf="!isLoginPage">
+    <ul class="nav" >
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <!-- <i class="material-icons">{{menuItem.icon}}</i> -->
+                <i class="fas {{menuItem.icon}}  {{menuItem.image}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>

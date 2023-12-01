@@ -1,0 +1,58 @@
+
+<div class="main-content">
+    <div class="container">
+       
+        
+        <!-- tableau  -->
+  
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <h4 class="card-title">Liste des administrateur</h4>
+
+                 <div class="add" >
+                    <button style="color: white; border-radius:20px; background-color: blue; border: none; width: 120px;" (click)="openDialog()"> <i class=" fa fa-plus"></i> Ajouter </button>
+                 </div>
+
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table" >
+                      <thead>
+                        <tr>
+                          <th> ID</th>
+                          <th> Prenom</th>
+                          <th> Nom </th>
+                          <th> Email</th>
+                          <!-- <th> Banque</th> -->
+                          <th> Statut Admin</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let admin of admins">
+                          <td> {{admin.idAdmin}}</td>
+                          <td>  {{admin.prenom}} </td>
+                          <td> {{admin.nom}} </td>
+                          <td> {{admin.email}} </td>
+                          <!-- <td> {{admin.banque?.nom?.toUpperCase()}} </td> -->
+                          <td style="color: blue;">
+                            {{admin.isActive ? "Active" : "Inactive"}}
+                            </td>
+                            <td> <button style="color: white; border-radius:20px; background-color: blue; border: none; width: 120px;" (click)="admin.isActive ? onDesActivate(admin.idAdmin) : onActivate(admin.idAdmin)   "> {{admin.isActive ? "Desactiver" : "Activer"}} </button></td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- fin  -->
+          
+  
+  
+  
+    </div>
+  </div>
+  

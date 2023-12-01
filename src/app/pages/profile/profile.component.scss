@@ -1,0 +1,16 @@
+.card .card-header-info .card-icon, .card .card-header-info .card-text, .card .card-header-info:not(.card-header-icon):not(.card-header-text), .card.bg-info, .card.card-rotate.bg-info .front, .card.card-rotate.bg-info .back {
+    background: #725787;
+}
+.nom{
+    background: #725787;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.img{
+    box-sizing: border-box;
+}

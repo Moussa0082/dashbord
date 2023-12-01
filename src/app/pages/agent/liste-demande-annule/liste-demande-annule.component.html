@@ -1,0 +1,58 @@
+<div class="main-content">
+    <div class="container">
+       
+
+        
+       
+
+        
+        <!-- tableau  -->
+
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <h4 class="card-title">Liste des demandes annulées</h4>
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th> ID</th>
+                          <th> Numéro Demande</th>
+                          <th> Prenom</th>
+                          <th> Nom </th>
+                          <th> Email</th>
+                          <th> Date Demande</th>
+                          <th> Type Demande</th>
+                          <th> Statut Demande</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let dm of demandes">
+                          <td> {{dm.idDemande}}</td>
+                          <td> {{dm.numeroDemande}}</td>
+                          <td> {{dm.utilisateur?.prenom?.toUpperCase()}} </td>
+                          <td> {{dm.utilisateur?.nom?.toUpperCase()}} </td>
+                          <td> {{dm.utilisateur?.email}} </td>
+                          <td>{{dm.dateDemande}} </td>
+                          <td>{{dm.typeBanque?.nom?.toUpperCase()}} </td>
+                          <td style="color: red;">
+                            {{dm.statutDemande?.toUpperCase()}}
+                            </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- fin  -->
+          
+
+
+
+    </div>
+  </div>
+  

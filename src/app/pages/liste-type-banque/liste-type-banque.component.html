@@ -1,0 +1,62 @@
+<div class="main-content">
+    <div class="container">
+       
+  
+        
+       
+  
+        
+        <!-- tableau  -->
+  
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <h4 class="card-title">Liste des types banques</h4>
+                <div class="add" >
+                    <button style="color: white; border-radius:20px; background-color: blue; border: none; width: 120px;" (click)="openDialog()"> <i class=" fa fa-plus"></i> Ajouter </button>
+                 </div>
+  
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th> ID </th>
+                          <th> Nom Banque</th>
+                          <th> Type Banque </th>
+                          <th> Description </th>
+                          <th> Image </th>
+                          <th> Date D'inscription</th>
+                          <th> Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let type of typeBanques">
+                          <td> {{type.idTypeBanque}}</td>
+                          <td> {{type.banque?.nom}} </td>
+                          <td> {{type.nom}} </td>
+                          <td> {{type.description}} </td>
+                          <!-- <td> <img src="../../../assets/img/profil.png" width="40px" height="40px" alt=""> </td> -->
+                          <td> <img [src]="'http://localhost/'+ type.image" width="40px" height="40px" alt=""> </td>
+                          <td> {{type.dateCreated}} </td>
+                          <td>
+                            <i class="fas fa-edit" style="color: green;"  (click)="openModifierDialog(type)" ></i>
+                            <i class="fas fa-trash" style="color: red;" (click)="delete(type.idTypeBanque)" ></i>
+                           </td>
+                        </tr>
+                    
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- fin  -->
+          
+  
+  
+  
+    </div>
+  </div>
+  

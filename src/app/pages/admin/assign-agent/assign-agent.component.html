@@ -1,0 +1,32 @@
+
+
+ 
+
+
+
+<!-- <div  mat-dialog-content class="mat-typography"> -->
+    <div class="add-doctor-container" >
+        <h2 class="title" >Assigner la demande à un agent</h2> <br>
+        <div class="trait"> </div>
+      
+        <div class="form-container">
+         
+          <form [formGroup]="assignForm" (ngSubmit)="assignDemande(assignForm.value.selectedAgentId)">
+   
+         <select formControlName="selectedAgentId"   class="input-field" style="width: 230px;">
+            <option>Choisissez un agent</option>
+            <option *ngFor="let agent of data.agents" [value]="agent.idAgent"> {{ agent.prenom?.toUpperCase() }} {{ agent.nom?.toUpperCase() }}</option>
+         </select>
+  
+            <button type="submit" class="add-button">
+              <i class="fa fa-plus"> </i>
+              Ajouter</button>
+          </form>
+          <div mat-dialog-actions>
+            <button mat-button mat-dialog-close class="add-button" style="margin-left: 5%; margin-top: -32%;">Annuler</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- </div> -->
+      

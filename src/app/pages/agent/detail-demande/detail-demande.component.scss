@@ -1,0 +1,48 @@
+
+
+.container{
+    background-color: #FFFFFF;
+
+    width: 90%;
+    height: 90%;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first{
+    display: flex;
+    margin-left: 1%;
+}
+.second{
+    display: flex;
+}
+.first>h3{
+    margin-left: 2%;
+}
+
+.second>h3{
+    margin-left: 3%;
+}
+
+.third{
+    display: flex;
+}
+.foor{
+    display: flex;
+}
+
+.third>h3{
+    margin-left: 3%;
+}
+
+.first>h3{
+    margin-left: 3%;
+}

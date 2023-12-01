@@ -1,0 +1,50 @@
+
+<div mat-dialog-title id="titre" *ngIf="!data"> Ajouter Des Admins</div>
+<div mat-dialog-title class="titre" *ngIf="data"> Modifier Des Admins</div>
+<div mat-dialog-content id="matback">
+    <form  [formGroup]="adminForm"  (ngSubmit)="onSubmit()">
+        <div class="form-row-md-20" id="form">
+          
+          <div class="form-group col-sm">
+            <label for="nom">Nom</label>
+            <input type="text" matInput class="form-control" placeholder="Ex. Keita" id="nom" formControlName="nom" required >
+          </div>
+          
+          
+          <div class="form-group col-sm">
+            <label for="prenom">Prénom</label>
+            <input type="text" matInput class="form-control" id="prenom" placeholder="Ex. Lanciné" formControlName="prenom" required >
+          </div>
+          
+          <div class="form-group col-sm">
+            <label for="email">Email </label>
+            <input type="mail" matInput class="form-control" id="email" placeholder="Ex. keita@gmail.com" formControlName="email" required>
+            
+          </div>
+          <div class="form-group col-sm">
+            <label for="motDePasse">Mot de passe </label>
+            <input type="password" matInput class="form-control" id="motDePasse" placeholder="*****************"  formControlName="motDePasse" required >
+          </div>
+          
+
+          <mat-form-field>
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let rol of roleadmin" [value]="rol">{{rol}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <div class="form-group col-sm">
+            <label for="inputPassword4">Repeter Mot de passe (en cm)</label>
+            <input type="password" matInput class="form-control" id="RepmotDePasse" placeholder="*****************"  formControlName="RepmotDePasse" required >
+          </div> -->
+          
+        
+       
+        <div class="row" id="grid">
+            
+            <button class="btn btn-round" mt-10 mat-raised-button type="button" [mat-dialog-close]="true">Retour</button>
+            <button class="btn btn-round" mt-10  mat-raised-button style="background-color: #725787;" type="submit" [disabled]="adminForm.invalid">{{data ? 'Modifier': 'Enregistrer'}}</button>
+        </div>
+        </div>
+      </form>
+</div>

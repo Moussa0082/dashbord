@@ -1,0 +1,34 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Modifier Profile</h4>
+                        <p class="card-category">Completer votre profile</p>
+                    </div>
+                    <div class="card-body" >
+                     <div class="img"> <img src="../../../assets/img/updateprofile.png" with="100vw" style="box-sizing: border-box;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <!-- <a href="javascript:void(0)">
+                            <img class="img" src="./assets/img/faces/marc.jpg" />
+                        </a> -->
+                        <div class="nom"><h1 style="color: #ffffff;">{{adminConnecter.prenom.charAt(0)+" "+adminConnecter.nom.charAt(0)}}</h1></div>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-category text-gray">Administrateur</h6>
+                        <h4 class="card-title">{{adminConnecter.prenom+" "+adminConnecter.nom}}</h4>
+                        <p class="card-description"> {{adminConnecter.email}}  </p>
+                        <a (click)="openEditForm(adminConnecter, '600ms', '600ms')" class="btn btn-round" style="background: #725787;">Modifier</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

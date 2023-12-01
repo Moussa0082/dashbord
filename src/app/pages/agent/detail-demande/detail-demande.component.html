@@ -1,0 +1,53 @@
+
+
+
+ 
+ <div class="container" *ngIf="demandeDetails">
+
+    <h2 class="detail">Detail demande</h2>
+ 
+     <div class="first">
+            <h3><strong>Prenom :</strong>  {{demandeDetails.utilisateur?.prenom?.toUpperCase()}}  </h3>  
+            <h3> <strong>Email :</strong> {{demandeDetails.utilisateur?.email}} </h3> 
+            <h3><strong>Adresse : </strong> {{demandeDetails.adresse}} </h3> 
+    
+     </div>
+ 
+     <div class="second">
+        <h3 style="margin-left: 3%;"><strong>Nom  :</strong> {{demandeDetails.utilisateur?.nom?.toUpperCase()}} </h3>
+        <h3 style="margin-left: 8%;"><strong>Date :</strong> {{demandeDetails.dateDemande}} </h3>
+        <h3 style="margin-left: 22%;"><strong>Sexe :</strong> {{demandeDetails.sexe?.toUpperCase()}}</h3>
+     </div>
+ 
+     <div class="third">
+        <h3 style="margin-left: 3%;"><strong>Date Naissance  :</strong> {{demandeDetails.dateNaiss}} </h3>
+        <h3 style="margin-left: 20%;"><strong>Type Demande :</strong> {{demandeDetails.typeBanque?.nom?.toUpperCase()}} </h3>
+     </div>
+ 
+     <div class="foor">
+        <h3 style="margin-left: 3%;"><strong>Numero  :</strong> {{demandeDetails.numeroUser?.toUpperCase()}} </h3>
+        <h3 style="margin-left: 29%;"><strong>Lieu Naissance :</strong> {{demandeDetails.lieuNaiss?.toUpperCase()}} </h3>
+     </div>
+ 
+     <div class="foor">
+        <h3 style="margin-left: 3%;"><strong>Statut Residence  :</strong> {{demandeDetails.statutResidence?.toUpperCase()}} </h3>
+        <h3 style="margin-left: 18%;"><strong>Etat Civil:</strong> {{demandeDetails.etatCivil}} </h3>
+     </div>
+ 
+     <div class="foor">
+        <h3 style="margin-left: 3%;"><strong>Photo d'idendité  :</strong> <img [src]="demandeDetails.photoValide" alt="" style="margin-left: 70px;"> </h3>
+        <!-- <h3 style="margin-left: 3%;"><strong>Photo d'idendité  :</strong> <img src="../../../../assets/img/profil.png" alt="" style="margin-left: 70px;"> </h3> -->
+        <h3 style="margin-left: 18%;"><strong>Carte d'identité/NINA/PASSPORT:</strong> <img src="../../../../assets/img/profil.png" alt="" style="margin-left: 20px;"> </h3>
+     </div>
+ 
+     <div class="foor" style="display: flex; justify-content: center;" >
+      <div class="rejeter">
+         <button style="background-color: red; color: white; margin-top: 20px; border: none; border-radius: 20px; width: 150px; margin-left: -60px;" (click)="rejeterDemande(demandeDetails.idDemande)"> <i class="fa fa-close"></i> Rejeter</button>
+      </div>
+      <div class="valider">
+         <button style="background-color: green; color: white; margin-top: 20px; border-radius: 20px; width: 150px; margin-left: 60px; border: none;" (click)="validerDemande(demandeDetails.idDemande)"> <i class="fa fa-check"></i> Valider</button>
+      </div>
+     </div>
+ 
+    
+ </div>

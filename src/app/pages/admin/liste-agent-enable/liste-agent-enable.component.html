@@ -1,0 +1,65 @@
+
+
+
+<div class="main-content">
+    <div class="container">
+       
+  
+        
+       
+  
+        
+        <!-- tableau  -->
+  
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <h4 class="card-title">Liste des agents active</h4>
+
+                <div class="add" >
+                  <button style="color: white; border-radius:20px; background-color: blue; border: none; width: 120px;" (click)="openDialog()"> <i class=" fa fa-plus"></i> Ajouter </button>
+               </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr >
+                          <th> ID</th>
+                          <th> Prenom</th>
+                          <th> Nom </th>
+                          <th> Email</th>
+                          <th> Banque</th>
+                          <th> Statut</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let agent of agents">
+                          <td>{{agent.idAgent}} </td>
+                          <td> {{agent.prenom}} </td>
+                          <td> {{agent.nom}}  </td>
+                          <td>  {{agent.email}}  </td>
+                          <td>  {{agent.banque?.nom}}  </td>
+                          <td style="color: blue;">
+                            {{agent.isActive ? 'Active' : ''}} 
+                            </td>
+                            <td> <button style="color: white; border-radius:20px; background-color: blue; border: none; width: 120px;"(click)="onDesActivate(agent.idAgent)" >Desactiver</button></td>
+                        </tr>
+                     
+                        
+                         
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- fin  -->
+          
+  
+  
+  
+    </div>
+  </div>
+  

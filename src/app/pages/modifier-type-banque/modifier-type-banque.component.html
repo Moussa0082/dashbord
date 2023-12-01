@@ -1,0 +1,52 @@
+
+
+
+
+ 
+
+
+
+<!-- <div  mat-dialog-content class="mat-typography"> -->
+    <div class="add-doctor-container" >
+        <h2 class="title" >Modifier type banque</h2> <br>
+        <div class="trait"> </div>
+      
+        <div class="form-container">
+          <div class="image-preview">
+            <img [src]="imagePreview">
+      
+          </div>
+          <form [formGroup]="typeBankForm" (ngSubmit)="onSubmit()" >
+          
+          <h4 class="title" style="margin-left: 290px; cursor: pointer; margin-top: 30px;" (click)="triggerImageUpload()">
+            Charger l'image</h4>
+          <input type="file" #imageInput style="display: none;" formControlName="image" (change)="ImageChange($event)" accept="image/*"
+            class="input-field">
+      
+            <div class="input-group">
+              <!-- <label for="">Nom de la banque</label> <br> -->
+              <input type="text"  formControlName="nom" placeholder="Nom du type"  class="input-field">
+         <textarea style="height: 10px; width:184px ;"  placeholder="Description" formControlName="description" class="input-field"></textarea>
+         <br>
+              <!-- <label for="" style="margin-top: 15px;">Adresse de la banque</label> <br> -->
+              <!-- <input type="text" formControlName="prenom" placeholder="Adresse de la banque"  class="input-field"> -->
+         <select  class="input-field" formControlName="banque" style="width: 182px;">
+            <option value="">Choisissez une banque</option>
+            <option *ngFor="let banque of bank" [ngValue]="banque"  [selected]="typeBanque?.banque?.id === banque.id">{{ banque.nom }}</option>   
+
+         </select>
+      
+            </div>
+            
+            <button type="submit"  class="add-button">
+              <i class="fa fa-plus"> </i>
+              Modifier</button>
+          </form>
+          <div mat-dialog-actions>
+            <button mat-button mat-dialog-close class="add-button" style="margin-left: 5%; margin-top: -32%;">Annuler</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- </div> -->
+      
