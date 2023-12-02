@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Banque } from 'app/model/banque';
 import { TypeBanque } from 'app/model/type-banque';
 import { BanqueService } from 'app/service/banque.service';
@@ -35,7 +36,7 @@ export class AjouterTypeBanqueComponent implements OnInit {
     }
  
   typeBankForm! : FormGroup;
-  constructor(private formBuilder: FormBuilder,private bankService:BanqueService,private typeBanqueService: TypeBanqueService) { 
+  constructor(private route:Router,private formBuilder: FormBuilder,private bankService:BanqueService,private typeBanqueService: TypeBanqueService) { 
 
     this.typeBankForm = this.formBuilder.group({
       nom: ['', Validators.required],
@@ -94,7 +95,9 @@ export class AjouterTypeBanqueComponent implements OnInit {
         this.typeBankForm.reset();
         this.chargerData();
         Swal.fire('Succès !...', 'Type Banque créer avec succes', 'success');
-    },
+        this.route.navigate['/type-bank']
+
+       },
     (error) => {
       console.error("Erreur", error);
       Swal.fire({

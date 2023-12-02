@@ -33,7 +33,7 @@ export class AjouterAgentComponent implements OnInit {
 
   //  selectedFile: File | null = null;
   
-  banques: Banque | any  = [];
+  bank: Banque | any  = [];
 
   agentForm! : FormGroup;
   constructor(private bankService:BanqueService,private formBuilder: FormBuilder, private route:Router,private agentService:AgentService) { 
@@ -55,9 +55,9 @@ export class AjouterAgentComponent implements OnInit {
     
     this.bankService.getAllBanque().subscribe(
       (data) => {
-        this.banques = data;
-        console.log(this.banques.length);
-        console.log(this.banques);
+        this.bank = data;
+        console.log(this.bank.length);
+        console.log(this.bank);
       },
       (error) => {
         console.error('Erreur lors du chargement de la liste des banques:', error);

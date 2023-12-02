@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Admin } from 'app/model/admin';
 import { Banque } from 'app/model/banque';
 import { AdministrateurService } from 'app/service/administrateur.service';
@@ -30,15 +31,15 @@ export class AjouteAdminComponent implements OnInit {
   image!: File;
 
   adminForm! : FormGroup;
-  constructor(private formBuilder: FormBuilder, private adminService:AdministrateurService, private bankService:BanqueService) { 
+  constructor(private route:Router,  private formBuilder: FormBuilder, private adminService:AdministrateurService, private bankService:BanqueService) { 
 
     this.adminForm = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       email: ['', Validators.required],
       image: ['', Validators.required],
-      motDePasse: ['', Validators.required]
-      // banque:['', Validators.required]
+      motDePasse: ['', Validators.required],
+      banque:['', Validators.required]
     });
   }
 
@@ -72,6 +73,8 @@ export class AjouteAdminComponent implements OnInit {
           console.log('Admin ajoutée avec succès :', response);
           this.adminForm.reset();
           Swal.fire('Succès !...',  'Admin créer avec succes', 'success');
+          this.route.navigate['/admins']
+
         },
         (error) => {
           console.error("Erreur lors de l'ajout de l'admin :", error);

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Admin } from 'app/model/admin';
 import { Banque } from 'app/model/banque';
 import { AdministrateurService } from 'app/service/administrateur.service';
@@ -27,7 +28,7 @@ export class AjouterBanqueComponent implements OnInit {
 
   
  
-  constructor(private fb : FormBuilder, private bankService: BanqueService, private adminService:AdministrateurService) { 
+  constructor(private route:Router, private fb : FormBuilder, private bankService: BanqueService, private adminService:AdministrateurService) { 
     this.bankForm = this.fb.group({
       nom:['', Validators.required],
       adresse:['', Validators.required],
@@ -73,6 +74,8 @@ export class AjouterBanqueComponent implements OnInit {
           console.log('Banque ajoutée avec succès :', response);
           this.bankForm.reset();
           Swal.fire('Succès !...',  'Banque créer avec succes', 'success');
+          this.route.navigate['/bank']
+
         },
         (error) => {
           console.error("Erreur lors de l'ajout de la banque :", error);
