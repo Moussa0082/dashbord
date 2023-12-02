@@ -58,39 +58,83 @@ export class ConnexionComponent implements OnInit {
   // login.component.ts
   // login.component.ts
 
- onSubmit() {
-  const { email, motDePasse , userType} = this.loginForm.value;
 
-  if (this.loginForm.valid) {
-    this.authService.login(email, motDePasse , userType).subscribe(
-      (response: any) => {
-        // Gérer la connexion réussie ici
-        console.log(response, userType);
-      // Stocker les informations de l'utilisateur dans localStorage
-      localStorage.setItem('userData', JSON.stringify({
-       
-        userData: response,  userType, // Assurez-vous que la structure de votre réponse est correcte
-      }));
-
-      console.log("userType", localStorage.getItem('userData'));
-        
-        // Rediriger vers le tableau de bord
-        this.router.navigate(['/tableaudebord']);
-
-        Swal.fire('Succès !...',  'Connexion réussie avec succès', 'success');
-        this.loginForm.reset();
-      },
-      (error: any) => {
-        console.error("Erreur lors de la connexion :", error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: error.error.message,
-        });
-      }
-    );
+  onSubmit() {
+    const { email, motDePasse, userType } = this.loginForm.value;
+  
+    if (this.loginForm.valid) {
+      this.authService.login(email, motDePasse, userType).subscribe(
+        (response: any) => {
+          // Gérer la connexion réussie ici
+          console.log(response, userType);
+          // Stocker les informations de l'utilisateur dans localStorage
+          localStorage.setItem('userData', JSON.stringify({
+            userData: response,
+            userType, // Assurez-vous que la structure de votre réponse est correcte
+          }));
+  
+          console.log("userType", localStorage.getItem('userData'));
+          // Rediriger vers la page appropriée
+          switch (userType) {
+            case "Admin":
+              this.router.navigate(['/adminTablau']);
+              break;
+            case "Agent":
+              this.router.navigate(['/agentTablau']);
+              break;
+            default:
+              this.router.navigate(['/tableaudebord']);
+              break;
+          }
+  
+          Swal.fire('Succès !...', 'Connexion réussie avec succès', 'success');
+          this.loginForm.reset();
+        },
+        (error: any) => {
+          console.error("Erreur lors de la connexion :", error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.error.message,
+          });
+        }
+      );
+    }
   }
-}
+
+//  onSubmit() {
+//   const { email, motDePasse , userType} = this.loginForm.value;
+
+//   if (this.loginForm.valid) {
+//     this.authService.login(email, motDePasse , userType).subscribe(
+//       (response: any) => {
+//         // Gérer la connexion réussie ici
+//         console.log(response, userType);
+//       // Stocker les informations de l'utilisateur dans localStorage
+//       localStorage.setItem('userData', JSON.stringify({
+       
+//         userData: response,  userType, // Assurez-vous que la structure de votre réponse est correcte
+//       }));
+
+//       console.log("userType", localStorage.getItem('userData'));
+        
+//         // Rediriger vers le tableau de bord
+//         this.router.navigate(['/tableaudebord']);
+
+//         Swal.fire('Succès !...',  'Connexion réussie avec succès', 'success');
+//         this.loginForm.reset();
+//       },
+//       (error: any) => {
+//         console.error("Erreur lors de la connexion :", error);
+//         Swal.fire({
+//           icon: 'error',
+//           title: 'Oops...',
+//           text: error.error.message,
+//         });
+//       }
+//     );
+//   }
+// }
 
 
 // onSubmit() {

@@ -177,21 +177,12 @@
 
 // mon navbar 
 
-
-
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { Enseignant } from 'app/model/enseignant';
 import { EnseigantService } from 'app/service/enseigant.service';
-import { AuthentificationService } from 'app/service/authentification.service';
-import { Admin } from 'app/model/admin';
-import { AdministrateurService } from 'app/service/administrateur.service';
-import { AgentService } from 'app/service/agent.service';
-import { SuperAdminService } from 'app/service/super-admin.service';
-import { SuperAdmin } from 'app/model/super-admin';
-import { Agent } from 'app/model/agent';
 
 @Component({
   selector: 'app-navbar',
@@ -206,33 +197,23 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
     listeEnseignants: Enseignant[]| any;
   nbrEnseignant: number;
-  // adminConnecter: Admin|undefined;
+
   isBlankPage: boolean = false;
   isLoginPage: boolean = false;
-  user: Admin | SuperAdmin | Agent | any;
 
-  isAdminLoginPage: boolean = false;
-  isSuperAdminPage: boolean = false;
-  isAgentPage:boolean = false;
-
-    constructor(location: Location,private authService: AuthentificationService , private element: ElementRef, private router: Router, private enseignantService: EnseigantService, private adminService:AdministrateurService, private agentService:AgentService, private superAdminService:SuperAdminService) {
+    constructor(location: Location,  private element: ElementRef, private router: Router, private enseignantService: EnseigantService) {
       this.location = location;
           this.sidebarVisible = false;
-          // this.loadEnseignantList();
-         this.user = this.authService.getLoggedInUserInfo();
-         this.router.events.subscribe((event) => {
-          if (event instanceof NavigationEnd) {
-            this.isLoginPage = event.url.endsWith('login') || event.url === '/login';
-          }
-          if (event instanceof NavigationEnd) {
-            this.isBlankPage = event.url.endsWith('/') || event.url === '/login';
-          }
-        });
+
+          this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+              this.isLoginPage = event.url.endsWith('login') || event.url === '/login';
+            }
+            if (event instanceof NavigationEnd) {
+              this.isBlankPage = event.url.endsWith('/') || event.url === '/login';
+            }
+          });
     }
-
-  
-
-
 
     ngOnInit(){
       this.listTitles = ROUTES.filter(listTitle => listTitle);
@@ -246,48 +227,18 @@ export class NavbarComponent implements OnInit {
            this.mobile_menu_visible = 0;
          }
      });
+     this.enseignantService.triggerUpdate();
+     this.loadEnseignantList();
+    this.counten();
 
-     this.user = this.authService.getLoggedInUserInfo();
-
-     console.log("data", localStorage.getItem('userData'));
-     this.authService.update$.subscribe(() => {
-      // this.adminConnecter = this.authService.getAdminConnect();
-
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isLoginPage = event.url.endsWith('login') || event.url === '/login';
+      }
+      if (event instanceof NavigationEnd) {
+        this.isBlankPage = event.url.endsWith('/') || event.url === '/login';
+      }
     });
-
-     this.enseignantService.update$.subscribe(() => {
-      this.loadEnseignantList();
-    });
-
-    // const userData = JSON.parse(localStorage.getItem('userData'));
-
-    // const userData = this.authService.getLoggedInUserInfo();
-
-    // // Utiliser le rôle de l'utilisateur pour personnaliser le contenu
-    // if (userData) {
-    //   switch (userData.userType) {
-    //     case 'Admin':
-    //       // Code spécifique pour les administrateurs
-    //       this.user = userData.admin;
-    //       break;
-    //     case 'SuperAdmin':
-    //       // Code spécifique pour les super-administrateurs
-    //       this.user = userData.superAdmin;
-    //       break;
-    //     case 'Agent':
-    //       // Code spécifique pour les agents
-    //       this.user = userData.agent;
-    //       break;
-    //     default:
-    //       console.error('Type d\'utilisateur non pris en charge :', userData.userType);
-    //       break;
-    //   }
-    // } else {
-    //   console.error('Aucune information utilisateur trouvée dans le localStorage.');
-    // }
-  
-    // console.log(this.user);
-
 }
 
     sidebarOpen() {
@@ -410,4 +361,3 @@ loadEnseignantList() {
     ///////++++++++++++++++
 
 }
-

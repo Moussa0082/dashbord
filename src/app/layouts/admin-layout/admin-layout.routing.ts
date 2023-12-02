@@ -63,8 +63,8 @@ export const AdminLayoutRoutes: Routes = [
  
     { path: 'login',      component: ConnexionComponent },
     { path: 'tableaudebord',   component: TableauDeBordComponent },
-    {path:'adminTableau', component:AdminTableauComponent},
-    {path:'agentTableau', component:AgentTableauComponent},
+    {path:'adminTablau', component:AdminTableauComponent},
+    {path:'agentTablau', component:AgentTableauComponent},
     // { path: 'profile',canActivate : [AuthGuardService],    component: ProfileComponent },
     // { path: 'enseignant',canActivate : [AuthGuardService],       component: EnseignantComponent },
     // { path: 'etudiant',canActivate : [AuthGuardService],      component: EtudiantComponent },

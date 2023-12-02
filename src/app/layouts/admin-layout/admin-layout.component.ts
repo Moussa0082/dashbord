@@ -243,10 +243,10 @@ export class AdminLayoutComponent implements OnInit {
           this.isBlankPage = event.url.endsWith('/') || event.url === '/login';
         }
         if (event instanceof NavigationEnd) {
-          this.isAdminPage = event.url.endsWith('adminTableau') || event.url === '/adminTableau';
+          this.isAdminPage = event.url.endsWith('adminTablau') || event.url === '/adminTablau';
         }
         if (event instanceof NavigationEnd) {
-          this.isAgentPage = event.url.endsWith('agentTableau') || event.url === '/agentTableau';
+          this.isAgentPage = event.url.endsWith('agentTablau') || event.url === '/agentTablau';
         }
       });
 
@@ -274,10 +274,10 @@ export class AdminLayoutComponent implements OnInit {
           this.isBlankPage = event.url.endsWith('/') || event.url === '/login';
         }
         if (event instanceof NavigationEnd) {
-            this.isAdminPage = event.url.endsWith('adminTableau') || event.url === '/adminTableau';
+            this.isAdminPage = event.url.endsWith('adminTablau') || event.url === '/adminTablau';
           }
           if (event instanceof NavigationEnd) {
-            this.isAgentPage = event.url.endsWith('agentTableau') || event.url === '/agentTableau';
+            this.isAgentPage = event.url.endsWith('agentTablau') || event.url === '/agentTablau';
           }
       });
     
