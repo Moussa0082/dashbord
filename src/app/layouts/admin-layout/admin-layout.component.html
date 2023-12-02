@@ -14,9 +14,12 @@
 </div> -->
 
 <div class="wrapper" >
-    <div  class="sidebar"  *ngIf="!isLoginPage " data-color="purple" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+    <div  class="sidebar"  *ngIf="!isLoginPage  && !isBlankPage" data-color="purple" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
     <!-- <div *ngIf=" admConnect != null  " class="sidebar" data-color="purple" data-background-color="white" data-image="./assets/img/sidebar-1.jpg"> -->
-        <app-sidebar ></app-sidebar>
+        <app-sidebar></app-sidebar>
+        <!-- <app-admin-side></app-admin-side>
+        <app-agent-side  ></app-agent-side> -->
+
         <!-- <div class="sidebar-background" style="background-image: url(./assets/img/sidebarimg.png)"></div> -->
     </div>
 

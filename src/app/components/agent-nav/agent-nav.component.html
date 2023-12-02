@@ -1,0 +1,41 @@
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top" *ngIf="!isLoginPage">
+    <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <!-- <a class="navbar-brand" href="#">{{getTitle()}}</a> -->
+        </div>
+        <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="head">
+     <p style="height: 50px; margin-top: 1%; margin-left: 2%; color: white;">{{getTitle()}}</p>
+     <div class="search">
+        <input type="text" placeholder="Rechercher ...">
+     </div>
+
+     <div class="image">
+        <img src="../../../assets/img/profil.png" alt="">
+    </div>
+    <div class="nom" >
+    <!-- <div class="nom" *ngIf="user"> -->
+        <h6> Moussa <strong> BANE</strong></h6>
+        <!-- <h6> {{user.userData.prenom}}<strong>{{user.userData.nom?.toUpperCase()}}</strong></h6> -->
+    </div>
+    <div class="icon">
+        <!-- <i class="fas fa-sign-out"></i> -->
+        <img src="../../../assets/img/logout.png" routerLink="/login" alt="" width="15px" height="15px">
+    </div>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+          
+
+        </div>
+    </div>
+</nav>
+<br> <br> <br>

@@ -24,20 +24,15 @@ export class ListeTypeBanqueComponent implements OnInit {
 
   constructor(private dialog:MatDialog, private typeBankService: TypeBanqueService, private bankService:BanqueService) { 
  
+     this.chargerData();
+
   }
 
 
   ngOnInit() : void{
-    this.typeBankService.getAllTypeBanque().subscribe(
-      (data) => {
-        this.typeBanques = data;
-        console.log(this.typeBanques.length);
-        console.log(this.typeBanques);
-      },
-      (error) => {
-        console.error('Erreur lors du chargement de la liste des types banques:', error);
-      }
-    );
+    this.typeBankService.update$.subscribe(() => {
+        this.chargerData();
+      });
   }
   chargerData() : void{
     this.typeBankService.getAllTypeBanque().subscribe(
@@ -106,7 +101,7 @@ export class ListeTypeBanqueComponent implements OnInit {
         )
       }
     });
-    // this.chargerData();
+    this.chargerData();
 
   }
 

@@ -211,6 +211,10 @@ export class NavbarComponent implements OnInit {
   isLoginPage: boolean = false;
   user: Admin | SuperAdmin | Agent | any;
 
+  isAdminLoginPage: boolean = false;
+  isSuperAdminPage: boolean = false;
+  isAgentPage:boolean = false;
+
     constructor(location: Location,private authService: AuthentificationService , private element: ElementRef, private router: Router, private enseignantService: EnseigantService, private adminService:AdministrateurService, private agentService:AgentService, private superAdminService:SuperAdminService) {
       this.location = location;
           this.sidebarVisible = false;

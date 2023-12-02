@@ -25,7 +25,7 @@
                           <th> Nom Banque</th>
                           <th> Type Banque </th>
                           <th> Description </th>
-                          <th> Image </th>
+                          <!-- <th> Image </th> -->
                           <th> Date D'inscription</th>
                           <th> Action</th>
                         </tr>
@@ -37,7 +37,7 @@
                           <td> {{type.nom}} </td>
                           <td> {{type.description}} </td>
                           <!-- <td> <img src="../../../assets/img/profil.png" width="40px" height="40px" alt=""> </td> -->
-                          <td> <img [src]="'http://localhost/'+ type.image" width="40px" height="40px" alt=""> </td>
+                          <!-- <td> <img [src]="'http://localhost/'+ type.image" width="40px" height="40px" alt=""> </td> -->
                           <td> {{type.dateCreated}} </td>
                           <td>
                             <i class="fas fa-edit" style="color: green;"  (click)="openModifierDialog(type)" ></i>

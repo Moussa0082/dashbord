@@ -18,17 +18,27 @@ export class AgentService {
   constructor(private http: HttpClient) { }
 
 
-  addAgent(agent: Agent, imageFile?: File | null): Observable<any> {
+  // addAgent(agent: Agent, imageFile?: File | null): Observable<any> {
 
+  //   const formData = new FormData();
+
+  //   formData.append('agent', JSON.stringify(agent));
+  //   if (imageFile) {
+  //     formData.append('image', imageFile);
+  //   }
+
+  //   return this.http.post<Agent>(`${this.baseUrl}/create`, formData);
+  // }
+
+  createAgent(agent: any, image?: File): Observable<any> {
     const formData = new FormData();
-
     formData.append('agent', JSON.stringify(agent));
-    if (imageFile) {
-      formData.append('image', imageFile);
-    }
+    if (image) formData.append('image', image);
+    
 
-    return this.http.post<Agent>(`${this.baseUrl}/create`, formData);
+    return this.http.post(`http://localhost:8080/agent/create`, formData);
   }
+
 
   getAllAgent(): Observable<any> {
     return this.http.get('http://localhost:8080/agent/read');

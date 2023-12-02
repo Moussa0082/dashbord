@@ -1,0 +1,9 @@
+.customlogo{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+.active :first-child{
+    background-color: blue;
+}

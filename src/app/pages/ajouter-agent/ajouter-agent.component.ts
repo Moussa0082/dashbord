@@ -1,5 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Banque } from 'app/model/banque';
+import { AgentService } from 'app/service/agent.service';
+import { BanqueService } from 'app/service/banque.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ajouter-agent',
@@ -15,50 +20,90 @@ export class AjouterAgentComponent implements OnInit {
   isEditMode = false;
   isFormVisible = false;
 
-
+  image!:File;
+     
+    ImageChange(event:any){
+      this.image = event.target.files[0];
+      console.log(this.image);
+    }
+ 
 
   // @Output() formSubmitted = new EventEmitter<void>()
 
 
   //  selectedFile: File | null = null;
   
+  banques: Banque | any  = [];
 
   agentForm! : FormGroup;
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private bankService:BanqueService,private formBuilder: FormBuilder, private route:Router,private agentService:AgentService) { 
 
-    // this.medecinForm = this.formBuilder.group({
-    //   id:['null'],
-    //   nom: ['', Validators.required],
-    //   prenom: ['', Validators.required],
-    //   email: ['', Validators.required],
-    //   telephone: ['', Validators.required],
-    //   specialite: ['', Validators.required],
-    //   image: ['']
-    // });
+    this.agentForm = this.formBuilder.group({
+   
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      email: ['', Validators.required],
+      motDePasse: ['', Validators.required],
+      image: ['', Validators.required],
+      banque:['', Validators.required]
+    });
   }
 
   
 
-  ngOnInit(): void {    
+  ngOnInit(): void { 
+    
+    this.bankService.getAllBanque().subscribe(
+      (data) => {
+        this.banques = data;
+        console.log(this.banques.length);
+        console.log(this.banques);
+      },
+      (error) => {
+        console.error('Erreur lors du chargement de la liste des banques:', error);
+      }
+    );
    
   }
 
   onSubmit() {
+  console.log("salut")
+    if (this.image == null ) {
+      Swal.fire({
+        title: 'Erreur!',
+        text: 'Une image est requise',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+      return
 
-    if (this.agentForm.valid) {
-    //   const newMedecin = this.medecinForm.value as Medecin;
-    //   this.medecinService.ajoutMedecin(newMedecin);
-    //   this.medecinService.getMedecin();
-    //   console.warn(newMedecin)
-    //   Swal.fire(
-    //     'Ajouter avec succès!',
-    //     'Les données sont enrégistrés avec succès!',
-    //     'success'
-    //   )
-    //   this.medecinForm.reset();
-       
-    // }
-  }
+    }
+   
+    
+      
+    if (this.agentForm.valid && this.image) {
+      console.log('valid')
+     const newAgent = this.agentForm.value;
+     console.log(this.agentForm.value);
+     console.log(newAgent);
+        
+    this.agentService.createAgent(newAgent, this.image).subscribe(
+      (response) => {
+        console.log("Agent crée", response);
+        this.agentForm.reset();
+        // this.chargerData();
+        Swal.fire('Succès !...', 'Agent créer avec succes', 'success');
+        this.route.navigate['/enable-agents']
+    },
+    (error) => {
+      console.error("Erreur", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.error.message,
+      });
+    });
+      }
        
 
         // toggleFormWithDelay() {

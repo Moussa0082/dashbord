@@ -5,6 +5,10 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AdminNavComponent } from './admin-nav/admin-nav.component';
+import { AgentNavComponent } from './agent-nav/agent-nav.component';
+import { AdminSideComponent } from './admin-side/admin-side.component';
+import { AgentSideComponent } from './agent-side/agent-side.component';
 
 @NgModule({
   imports: [
@@ -14,12 +18,21 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    AdminNavComponent,
+    AgentNavComponent,
+    AdminSideComponent,
+    AgentSideComponent
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    AdminNavComponent,
+    AgentNavComponent,
+    AdminSideComponent,
+    AgentSideComponent
+
   ]
 })
 export class ComponentsModule { }

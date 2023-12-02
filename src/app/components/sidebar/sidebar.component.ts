@@ -72,6 +72,7 @@ declare interface RouteInfo {
     icon?: string;
     class?: string;
 }
+
 export const ROUTES: RouteInfo[] = [
 
   { path: '/tableaudebord', title: 'Tableau de bord',  icon: 'fa-chart-line', class: '' },
@@ -91,7 +92,7 @@ export const ROUTES: RouteInfo[] = [
   {path: '/enable-agents', title:'Agent active', icon:'fa fa-user'},
   {path: '/disable-agents', title:'Agent desactiver' , icon:'fas fa-user-times'},
   {path: '/groupes-cotisation', title:'Groupes cotisation',icon:'fa fa-money' },
-  {path:'admins', title:'Liste Admins', icon:'fa fa-users'},
+  {path:'admins', title:'Admin de la banque', icon:'fa fa-users'},
 
 ];
 
@@ -104,6 +105,8 @@ export class SidebarComponent implements OnInit {
   menuItems: any[];
   isBlankPage: boolean = false;
   isLoginPage: boolean = false;
+  isAdminPage: boolean = false;
+  isAgentPage:boolean = false;
   user: any;
 
   constructor(private authService: AuthentificationService,
@@ -116,24 +119,26 @@ export class SidebarComponent implements OnInit {
         if (event instanceof NavigationEnd) {
           this.isBlankPage = event.url.endsWith('/') || event.url === '/login';
         }
+        if (event instanceof NavigationEnd) {
+          this.isAdminPage = event.url.endsWith('adminTableau') || event.url === '/adminTableau';
+        }
+        if (event instanceof NavigationEnd) {
+          this.isAgentPage = event.url.endsWith('agentTableau') || event.url === '/agentTableau';
+        }
       });
     
   }
 
   showMenuItem(menuItem: any): boolean {
-    if (!this.user) {
-      return false; // Cachez l'élément si aucune information utilisateur n'est disponible
-    }
+
   
     // Logique pour déterminer si afficher ou non l'élément du menu en fonction du type d'utilisateur
-    switch (this.user.userType) {
-      case 'Admin':
+    if (this.isAdminPage) {
+      
         return menuItem.path !== '/bank' && menuItem.path!=='/type-bank'; // Exemple : ne pas afficher l'élément du menu '/bank' pour les administrateurs
       // Ajoutez d'autres cas pour d'autres types d'utilisateurs si nécessaire
-      default:
-        return true; // Affichez par défaut si le type d'utilisateur n'est pas géré
-    }
-  }
+    
+  }}
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);

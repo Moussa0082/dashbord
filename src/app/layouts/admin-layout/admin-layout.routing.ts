@@ -55,12 +55,16 @@ import { ListeBankComponent } from 'app/pages/liste-bank/liste-bank.component';
 import { ListeAdminComponent } from 'app/pages/liste-admin/liste-admin.component';
 import { ListeTypeBanqueComponent } from 'app/pages/liste-type-banque/liste-type-banque.component';
 import { ListeDemandeAnnuleComponent } from 'app/pages/agent/liste-demande-annule/liste-demande-annule.component';
+import { AdminTableauComponent } from 'app/pages/admin-tableau/admin-tableau.component';
+import { AgentTableauComponent } from 'app/pages/agent-tableau/agent-tableau.component';
 // import { ConnexionComponent } from 'app/pages/connexion/connexion.component';
 
 export const AdminLayoutRoutes: Routes = [
  
     { path: 'login',      component: ConnexionComponent },
     { path: 'tableaudebord',   component: TableauDeBordComponent },
+    {path:'adminTableau', component:AdminTableauComponent},
+    {path:'agentTableau', component:AgentTableauComponent},
     // { path: 'profile',canActivate : [AuthGuardService],    component: ProfileComponent },
     // { path: 'enseignant',canActivate : [AuthGuardService],       component: EnseignantComponent },
     // { path: 'etudiant',canActivate : [AuthGuardService],      component: EtudiantComponent },

@@ -54,6 +54,17 @@ export class AjouterBanqueComponent implements OnInit {
   }
 
   onSubmit() {
+
+    if (this.image == null ) {
+      Swal.fire({
+        title: 'Erreur!',
+        text: 'Une image est requise pour representer le logo la banque',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+      return
+
+    }
     if(this.bankForm.valid && this.image){
       const newBank: Banque = this.bankForm.value;
       
@@ -66,6 +77,11 @@ export class AjouterBanqueComponent implements OnInit {
         (error) => {
           console.error("Erreur lors de l'ajout de la banque :", error);
           // Gérer l'erreur ici
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.error.message,
+          });
         }
       );
     }

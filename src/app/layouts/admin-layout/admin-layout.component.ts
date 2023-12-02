@@ -224,13 +224,32 @@ export class AdminLayoutComponent implements OnInit {
   idAdministrateurlocal:any;
   isLoginPage: boolean = false;
   isBlankPage: boolean = false;
-  
+  isAdminPage: boolean = false;
+  isAgentPage:boolean = false;
+
+
+
   constructor( public location: Location,
-    private authService: AuthentificationService
-    , 
+    private authService: AuthentificationService, 
     private router: Router) {
     this.admConnect = this.authService.getAdminConnect();
     // this.idAdministrateurlocal= localStorage.getItem("idAdministrateur");
+    
+    this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          this.isLoginPage = event.url.endsWith('login') || event.url === '/login';
+        }
+        if (event instanceof NavigationEnd) {
+          this.isBlankPage = event.url.endsWith('/') || event.url === '/login';
+        }
+        if (event instanceof NavigationEnd) {
+          this.isAdminPage = event.url.endsWith('adminTableau') || event.url === '/adminTableau';
+        }
+        if (event instanceof NavigationEnd) {
+          this.isAgentPage = event.url.endsWith('agentTableau') || event.url === '/agentTableau';
+        }
+      });
+
   }
 
   
@@ -254,16 +273,14 @@ export class AdminLayoutComponent implements OnInit {
         if (event instanceof NavigationEnd) {
           this.isBlankPage = event.url.endsWith('/') || event.url === '/login';
         }
+        if (event instanceof NavigationEnd) {
+            this.isAdminPage = event.url.endsWith('adminTableau') || event.url === '/adminTableau';
+          }
+          if (event instanceof NavigationEnd) {
+            this.isAgentPage = event.url.endsWith('agentTableau') || event.url === '/agentTableau';
+          }
       });
     
-    
-    if(localStorage.getItem("idAdministrateur")!=null){
-        console.log("on est ds admin==========",localStorage.getItem("idAdministrateur"));
-        this.idAdministrateurlocal=(localStorage.getItem("idAdministrateur"));
-    }else{
-        console.log("on est ds admin==PAS USER========",localStorage.getItem("idAdministrateur"));
-        this.idAdministrateurlocal=0;
-    }
     
     
     // this.statusAdmin = this.authService.getAdminConnect();

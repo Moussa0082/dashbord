@@ -51,6 +51,8 @@ import { AjouterBanqueComponent } from './pages/ajouter-banque/ajouter-banque.co
 import { AjouterTypeBanqueComponent } from './pages/ajouter-type-banque/ajouter-type-banque.component';
 import { ModifierBanqueComponent } from './pages/modifier-banque/modifier-banque.component';
 import { ModifierTypeBanqueComponent } from './pages/modifier-type-banque/modifier-type-banque.component';
+import { AdminTableauComponent } from './pages/admin-tableau/admin-tableau.component';
+import { AgentTableauComponent } from './pages/agent-tableau/agent-tableau.component';
 
 @NgModule({
   imports: [
@@ -111,6 +113,8 @@ import { ModifierTypeBanqueComponent } from './pages/modifier-type-banque/modifi
     AjouterTypeBanqueComponent,
     ModifierBanqueComponent,
     ModifierTypeBanqueComponent,
+    AdminTableauComponent,
+    AgentTableauComponent,
 
   ],
   providers: [],

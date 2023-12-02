@@ -37,8 +37,8 @@ export class AjouteAdminComponent implements OnInit {
       prenom: ['', Validators.required],
       email: ['', Validators.required],
       image: ['', Validators.required],
-      motDePasse: ['', Validators.required],
-      banque:['', Validators.required]
+      motDePasse: ['', Validators.required]
+      // banque:['', Validators.required]
     });
   }
 
@@ -67,7 +67,7 @@ export class AjouteAdminComponent implements OnInit {
     if(this.adminForm.valid && this.image){
       const newAdmin: Admin = this.adminForm.value;
       
-      this.adminService.addAdmin(newAdmin, this.image).subscribe(
+      this.adminService.createAdmin(newAdmin, this.image).subscribe(
         (response) => {
           console.log('Admin ajoutée avec succès :', response);
           this.adminForm.reset();
@@ -76,6 +76,11 @@ export class AjouteAdminComponent implements OnInit {
         (error) => {
           console.error("Erreur lors de l'ajout de l'admin :", error);
           // Gérer l'erreur ici
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.error.message,
+          });
         }
       );
     }
