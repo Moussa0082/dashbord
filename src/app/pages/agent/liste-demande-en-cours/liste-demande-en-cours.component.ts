@@ -21,9 +21,9 @@ export class ListeDemandeEnCoursComponent implements OnInit {
   ngOnInit() : void{
     this.demandeService.getAllDemande().subscribe(
       (data) => {
-        this.demandes = data.filter(demande => demande.statutDemande === "en cours");
-        // console.log(this.demandes.utilisateur.nom)
-        // console.log(this.demandes.utilisateur.nom)
+        console.log('Data received:', data);
+        this.demandes = data.filter(demande => demande.statutDemande === " en cours");
+        console.log('Demandes after filter:', this.demandes);
         this.demandes.forEach(demande => {
           console.log(demande.utilisateur?.nom);
         });

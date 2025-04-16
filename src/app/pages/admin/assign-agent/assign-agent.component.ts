@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Agent } from 'app/model/agent';
 import { DemandeService } from 'app/service/demande.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-assign-agent',
@@ -44,11 +45,27 @@ export class AssignAgentComponent implements OnInit {
             console.log(result);
             // Fermez le dialogue ou effectuez d'autres actions nécessaires.
             this.dialogRef.close();
+              // Afficher SweetAlert en cas de succès
+          Swal.fire({
+            icon: 'success',
+            title: 'Succès!',
+            text: 'La demande a été assignée à l\'agent avec succès.',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            // Fermez le dialogue après que l'utilisateur a cliqué sur OK
+            this.dialogRef.close(true); // Vous pouvez passer des données pour indiquer le succès
+          });
           },
           error => {
             console.error('Erreur lors de l\'attribution de la demande à l\'agent', error);
             // Fermez le dialogue en cas d'erreur si nécessaire.
             this.dialogRef.close();
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur!',
+              text: 'Une erreur s\'est produite lors de l\'assignation de l\'agent.',
+              confirmButtonText: 'OK'
+            });
           });
       
     }
